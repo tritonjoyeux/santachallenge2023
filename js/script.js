@@ -1,10 +1,25 @@
 window.onload = function () {
     state = 'menu';
+    volume = 0.5;
+
+    document.getElementById("muteButton").addEventListener("click", function () {
+        if (document.getElementById("theme").volume === 0) {
+            document.getElementById("theme").volume = 0.5;
+            volume = 0.5;
+            document.getElementById("muteButton").style.backgroundColor = "white";
+        } else {
+            document.getElementById("theme").volume = 0;
+            volume = 0;
+            document.getElementById("muteButton").style.backgroundColor = "grey";
+        }
+    })
+
     document.getElementById("playButton").addEventListener("click", function () {
         if (state !== 'menu') {
             return;
         }
         document.getElementById("theme").play();
+        document.getElementById("theme").volume = volume;
         document.getElementById("menu").classList.add("menuHide");
         setTimeout(() => {
             document.getElementById("menu").style.display = "none";
@@ -13,9 +28,32 @@ window.onload = function () {
 
             setTimeout(() => {
                 document.getElementById("choose").play();
-                state = 'game';
+                document.getElementById("choose").volume = 0.7;
+                state = 'select';
             }, 1500)
         }, 3800)
+    });
+
+    document.getElementById("startGameButton").addEventListener("click", function () {
+        state = 'presentation';
+        document.getElementById("container").classList.remove("gameShow");
+        document.getElementById("container").classList.add("gameHide");
+        setTimeout(() => {
+            document.getElementById("container").style.display = "none";
+            document.getElementById("presentation").style.display = "flex";
+            document.getElementById("presentationPlayerOne").src = santas[player1];
+            document.getElementById("presentationNamePlayerOne").innerHTML = player1Name;
+            document.getElementById("presentationPlayerTwo").src = santas[player2];
+            document.getElementById("presentationNamePlayerTwo").innerHTML = player2Name;
+
+            document.getElementById("presentationPlayerOne").classList.add("fromLeft");
+            setTimeout(() => {
+                document.getElementById("presentationPlayerTwo").classList.add("fromRight");
+                setTimeout(() => {
+                    document.getElementById("vs").classList.add("fromTop");
+                }, 500)
+            }, 500);
+        }, 750)
     });
 
     const santas = [
@@ -57,8 +95,10 @@ window.onload = function () {
     ];
 
     player1 = null;
+    player1Locked = false;
     player1Name = '';
     player2 = null;
+    player2Locked = false;
     player2Name = '';
 
     var santaContainers = document.getElementsByClassName("santaImagesContainer");
@@ -68,9 +108,17 @@ window.onload = function () {
                 return;
             }
             if (player1 !== this.dataset.id) {
+                if (player1Locked)
+                    return;
                 player1 = this.dataset.id;
                 player1Name = this.dataset.name;
                 updateGame(1);
+            } else {
+                player1Locked = !player1Locked;
+                if (player1Locked) {
+                    document.getElementById("select").play();
+                }
+                updateGame(1, true);
             }
         });
     }
@@ -81,10 +129,24 @@ window.onload = function () {
             return;
         }
 
+        if (e.keyCode == '13') {
+            // enter
+            player2Locked = !player2Locked;
+            if (player2Locked) {
+                document.getElementById("select").play();
+            }
+            updateGame(2, true);
+            return;
+        }
+
         if (player2 === null) {
             player2 = 0;
             player2Name = santaNames[player2];
             updateGame(2);
+            return;
+        }
+
+        if (player2Locked) {
             return;
         }
 
@@ -152,13 +214,36 @@ window.onload = function () {
                 }
             }
         }
+
         if (e.keyCode == '40' || e.keyCode == '38' || e.keyCode == '37' || e.keyCode == '39') {
             player2Name = santaNames[player2];
             updateGame(2);
         }
     };
 
-    function updateGame(player) {
+    function updateGame(player, lock = false) {
+        if (lock) {
+            var santaImages = document.getElementsByClassName("santaImagesContainer");
+            for (var image of santaImages) {
+                if (image.dataset.id == player1) {
+                    image.style.backgroundColor = "rgba(255, 0, 0, " + (player1Locked ? 1 : 0.5) + ")";
+                    if (player2 == player1) {
+                        image.style.backgroundColor = "purple";
+                    }
+                } else if (image.dataset.id == player2) {
+                    image.style.backgroundColor = "rgba(0, 0, 255, " + (player2Locked ? 1 : 0.5) + ")";
+                } else {
+                    image.style.backgroundColor = "transparent";
+                }
+            }
+
+            if (player1Locked && player2Locked) {
+                document.getElementById("startGameButton").style.display = "flex";
+            } else {
+                document.getElementById("startGameButton").style.display = "none";
+            }
+            return;
+        }
         const timeText = 300;
         console.log("update from " + player)
         if (player === 1) {
@@ -211,12 +296,12 @@ window.onload = function () {
         var santaImages = document.getElementsByClassName("santaImagesContainer");
         for (var image of santaImages) {
             if (image.dataset.id == player1) {
-                image.style.backgroundColor = "rgba(255, 0, 0, 0.5)";
+                image.style.backgroundColor = "rgba(255, 0, 0, " + (player1Locked ? 1 : 0.5) + ")";
                 if (player2 == player1) {
                     image.style.backgroundColor = "purple";
                 }
             } else if (image.dataset.id == player2) {
-                image.style.backgroundColor = "rgba(0, 0, 255, 0.5)";
+                image.style.backgroundColor = "rgba(0, 0, 255, " + (player2Locked ? 1 : 0.5) + ")";
             } else {
                 image.style.backgroundColor = "transparent";
             }
