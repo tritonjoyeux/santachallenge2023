@@ -163,6 +163,7 @@ body {
     justify-content: center;
     position: relative;
     overflow: hidden;
+    transform: scale(0.9);
     height: 866px;
     width: 1555px;
 }
