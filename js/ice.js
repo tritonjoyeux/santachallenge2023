@@ -3,7 +3,6 @@ const widthI = 130;   // number of columns
 let ice = new Array(widthI * heightI).fill(0); // declare and reset the array that holds the value of all the tiles
 
 let contextI = document.getElementById('myCanvasIce').getContext('2d');
-window.requestAnimationFrame(iceA);
 
 function iceA() {
   for (let i = 0; i < widthI; i++)

@@ -3,7 +3,6 @@ const width = 130;   // number of columns
 let fire = new Array(width * height).fill(0); // declare and reset the array that holds the value of all the tiles
 
 let context = document.getElementById('myCanvasFire').getContext('2d');
-window.requestAnimationFrame(burn);
 
 function burn() {
   for (let i = 0; i < width; i++)

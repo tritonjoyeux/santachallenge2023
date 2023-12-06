@@ -96,6 +96,8 @@ window.onload = function () {
                     document.getElementById("vs").classList.add("fromTop");
                     document.getElementById("myCanvasFire").style.display = "block";
                     document.getElementById("myCanvasIce").style.display = "block";
+                    window.requestAnimationFrame(burn);
+                    window.requestAnimationFrame(iceA);
                 }, 500)
             }, 500);
         }, 750)
