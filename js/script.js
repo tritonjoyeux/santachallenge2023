@@ -16,11 +16,21 @@ window.onload = function () {
 
 
     state = 'menu';
-    volume = 0.5;
+    volume = 0.1;
 
+    const choose = document.getElementById("choose");
+    const select = document.getElementById("select");
     const vsSound = document.getElementById("vsSound");
     const spawnSound = document.getElementById("spawnSound");
     const spawn2Sound = document.getElementById("spawn2Sound");
+    const theme = document.getElementById("theme");
+
+    choose.volume = volume;
+    select.volume = volume;
+    vsSound.volume = volume;
+    spawnSound.volume = volume;
+    spawn2Sound.volume = volume;
+    theme.volume = volume;
 
     document.getElementById("downloadImage").addEventListener("click", function () {
         html2canvas(document.getElementById("presentation"), {
@@ -42,23 +52,25 @@ window.onload = function () {
     });
 
     document.getElementById("muteButton").addEventListener("click", function () {
-        if (document.getElementById("theme").volume === 0) {
-            document.getElementById("theme").volume = 0.5;
-            volume = 0.5;
+        if (theme.volume === 0) {
+            volume = 0.1;
             document.getElementById("muteButton").style.backgroundColor = "white";
         } else {
-            document.getElementById("theme").volume = 0;
             volume = 0;
             document.getElementById("muteButton").style.backgroundColor = "grey";
         }
+        select.volume = volume;
+        vsSound.volume = volume;
+        spawnSound.volume = volume;
+        spawn2Sound.volume = volume;
+        theme.volume = volume;
     })
 
     document.getElementById("playButton").addEventListener("click", function () {
         if (state !== 'menu') {
             return;
         }
-        document.getElementById("theme").play();
-        document.getElementById("theme").volume = volume;
+        theme.play();
         document.getElementById("menu").classList.add("menuHide");
         setTimeout(() => {
             document.getElementById("menu").style.display = "none";
@@ -66,8 +78,7 @@ window.onload = function () {
             document.getElementById("container").classList.add("gameShow");
 
             setTimeout(() => {
-                document.getElementById("choose").play();
-                document.getElementById("choose").volume = 0.7;
+                choose.play();
                 state = 'select';
             }, 1500)
         }, 3800)
@@ -135,7 +146,7 @@ window.onload = function () {
             } else {
                 player1Locked = !player1Locked;
                 if (player1Locked) {
-                    document.getElementById("select").play();
+                    select.play();
                 }
                 updateGame(1, true);
             }

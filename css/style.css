@@ -506,6 +506,28 @@ body {
     display: none;
 }
 
-#gameScreen {
-    
+#controlContainer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding-right: 6px;
+    padding-left: 6px;
+    border-top-right-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    font-family: 'SmashBross';
+}
+
+.playerControlContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.playerControlContainer img {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
 }
