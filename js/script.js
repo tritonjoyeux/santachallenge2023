@@ -78,6 +78,8 @@ window.onload = function () {
                 setTimeout(() => {
                     vsSound.play();
                     document.getElementById("vs").classList.add("fromTop");
+                    document.getElementById("myCanvasFire").style.display = "block";
+                    document.getElementById("myCanvasIce").style.display = "block";
                 }, 500)
             }, 500);
         }, 750)

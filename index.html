@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="lib/html2canvas.min.js"></script>
 </head>
-<body>
+<body>    
     <div id="menu">
         <img draggable="false" src="assets/images/logo_full.png" id="logo">
         <div id="playButton">Jouer</div>
@@ -108,10 +108,12 @@
         <div id="presentationPlayerOneContainer">
             <img draggable="false" src="" class="presentationImage" id="presentationPlayerOne">
             <div class="playerName" id="presentationNamePlayerOne"></div>
+            <canvas id="myCanvasFire" width="750" height="966"></canvas><br>
         </div>
         <div id="presentationPlayerTwoContainer">
             <img draggable="false" src="" class="presentationImage" id="presentationPlayerTwo">
             <div class="playerName" id="presentationNamePlayerTwo"></div>
+            <canvas id="myCanvasIce" width="750" height="966"></canvas><br>
         </div>
     </div>
     <div id="muteButton">
@@ -127,5 +129,7 @@
     <audio id="spawnSound" src="assets/music/spawn.mp3"></audio>
     <audio id="spawn2Sound" src="assets/music/spawn.mp3"></audio>
     <script src="js/script.js"></script>
+    <script src="js/fire.js"></script>
+    <script src="js/ice.js"></script>
 </body>
 </html>

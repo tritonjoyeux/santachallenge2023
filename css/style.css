@@ -376,7 +376,6 @@ body {
     display: flex;
     align-items: flex-end;
     height: 100%;
-    background-color: rgba(255, 53, 55, 0.7);
     position: relative;
 }
 
@@ -384,7 +383,6 @@ body {
     display: flex;
     align-items: flex-end;
     height: 100%;
-    background-color: rgba(48, 137, 255, 0.7);
     position: relative;
 }
 
@@ -422,16 +420,16 @@ body {
 }
 
 #presentationPlayerOne {
-    transform: translateX(-100%);
+    transform: translateX(-200%);
 }
 
 #presentationPlayerTwo {
-    transform: translateX(100%);
+    transform: translateX(200%);
 }
 
 @keyframes fromLeft {
     0%{
-        transform: translateX(-100%);
+        transform: translateX(-200%);
     }
     100%{
         transform: translateX(0%);
@@ -464,7 +462,7 @@ body {
 
 @keyframes fromRight {
     0%{
-        transform: translateX(100%);
+        transform: translateX(200%);
     }
     100%{
         transform: translateX(0%);
@@ -487,4 +485,16 @@ body {
     animation-name: fromRight;
     animation-duration: 500ms;
     animation-fill-mode: forwards;
+}
+
+#myCanvasFire {
+    position: absolute;
+    bottom: 0;
+    display: none;
+}
+
+#myCanvasIce {
+    position: absolute;
+    bottom: 0;
+    display: none;
 }
