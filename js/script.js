@@ -2,6 +2,29 @@ window.onload = function () {
     state = 'menu';
     volume = 0.5;
 
+    const vsSound = document.getElementById("vsSound");
+    const spawnSound = document.getElementById("spawnSound");
+    const spawn2Sound = document.getElementById("spawn2Sound");
+
+    document.getElementById("downloadImage").addEventListener("click", function () {
+        html2canvas(document.getElementById("presentation"), {
+            allowTaint: true,
+            foreignObjectRendering: true
+        }).then(canvas => {
+            canvas.style.display = 'none'
+            document.body.appendChild(canvas)
+            return canvas
+        }).then(canvas => {
+            console.log(canvas)
+            const image = canvas.toDataURL('image/png')
+            const a = document.createElement('a')
+            a.setAttribute('download', 'my-image.png')
+            a.setAttribute('href', image)
+            a.click()
+            canvas.remove()
+        })
+    });
+
     document.getElementById("muteButton").addEventListener("click", function () {
         if (document.getElementById("theme").volume === 0) {
             document.getElementById("theme").volume = 0.5;
@@ -39,60 +62,36 @@ window.onload = function () {
         document.getElementById("container").classList.remove("gameShow");
         document.getElementById("container").classList.add("gameHide");
         setTimeout(() => {
+            spawnSound.play();
             document.getElementById("container").style.display = "none";
             document.getElementById("presentation").style.display = "flex";
             document.getElementById("presentationPlayerOne").src = santas[player1];
             document.getElementById("presentationNamePlayerOne").innerHTML = player1Name;
             document.getElementById("presentationPlayerTwo").src = santas[player2];
             document.getElementById("presentationNamePlayerTwo").innerHTML = player2Name;
+            // document.getElementById("downloadImage").style.display = "flex";
 
             document.getElementById("presentationPlayerOne").classList.add("fromLeft");
             setTimeout(() => {
+                spawn2Sound.play();
                 document.getElementById("presentationPlayerTwo").classList.add("fromRight");
                 setTimeout(() => {
+                    vsSound.play();
                     document.getElementById("vs").classList.add("fromTop");
                 }, 500)
             }, 500);
         }, 750)
     });
 
-    const santas = [
-        "assets/images/santa/chef.png",
-        "assets/images/santa/steampunk.png",
-        "assets/images/santa/cowboy.png",
-        "assets/images/santa/detective.png",
-        "assets/images/santa/magician.png",
-        "assets/images/santa/rockstar.png",
-        "assets/images/santa/scuba.png",
-        "assets/images/santa/beach.png",
-        "assets/images/santa/space.png",
-        "assets/images/santa/steampunk2.png",
-        "assets/images/santa/space2.png",
-        "assets/images/santa/superhero.png",
-        "assets/images/santa/chill.png",
-        "assets/images/santa/futur.png",
-        "assets/images/santa/medieval.png",
-        "assets/images/santa/superhero2.png",
-    ]
+    const domSantas = document.getElementsByClassName("santaImagesContainer");
+    let santas = [];
+    let santasNames = [];
 
-    const santaNames = [
-        "Chef Santatouille",
-        "Santa Steam",
-        "Santa Lasso",
-        "Santa Lock",
-        "Magico Santa",
-        "Santa Rock'n'Roll",
-        "Santa Scuba",
-        "Santa Beach",
-        "Santa Pesquet",
-        "Santa Gears",
-        "Commander Claus",
-        "Super Santa",
-        "Santa Chill",
-        "Santa Automate",
-        "Knight Claus",
-        "Santa Guardian",
-    ];
+    for (var i = 0; i < domSantas.length; i++) {
+        const img = domSantas[i].getElementsByTagName("img")[0];
+        santas.push(img.src);
+        santasNames.push(domSantas[i].dataset.name);
+    }
 
     player1 = null;
     player1Locked = false;
@@ -141,7 +140,7 @@ window.onload = function () {
 
         if (player2 === null) {
             player2 = 0;
-            player2Name = santaNames[player2];
+            player2Name = santasNames[player2];
             updateGame(2);
             return;
         }
@@ -216,7 +215,7 @@ window.onload = function () {
         }
 
         if (e.keyCode == '40' || e.keyCode == '38' || e.keyCode == '37' || e.keyCode == '39') {
-            player2Name = santaNames[player2];
+            player2Name = santasNames[player2];
             updateGame(2);
         }
     };
@@ -296,12 +295,12 @@ window.onload = function () {
         var santaImages = document.getElementsByClassName("santaImagesContainer");
         for (var image of santaImages) {
             if (image.dataset.id == player1) {
-                image.style.backgroundColor = "rgba(255, 0, 0, " + (player1Locked ? 1 : 0.5) + ")";
+                image.style.backgroundColor = "rgba(255, 53, 55, " + (player1Locked ? 1 : 0.5) + ")";
                 if (player2 == player1) {
                     image.style.backgroundColor = "purple";
                 }
             } else if (image.dataset.id == player2) {
-                image.style.backgroundColor = "rgba(0, 0, 255, " + (player2Locked ? 1 : 0.5) + ")";
+                image.style.backgroundColor = "rgba(40, 143, 233, " + (player2Locked ? 1 : 0.5) + ")";
             } else {
                 image.style.backgroundColor = "transparent";
             }

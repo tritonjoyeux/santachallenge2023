@@ -34,6 +34,25 @@ body {
     height: 22px;
 }
 
+#downloadImage {
+    position: absolute;
+    top: 0px;
+    right: 50px;
+    margin: 10px;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+}
+
+#download {
+    height: 22px;
+}
+
 #menu {
     display: flex;
     flex-direction: column;
@@ -140,7 +159,7 @@ body {
 #presentation {
     display: none;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     position: relative;
     overflow: hidden;
     height: 866px;
@@ -357,7 +376,7 @@ body {
     display: flex;
     align-items: flex-end;
     height: 100%;
-    background-color: rgba(255,0,0,0.5);
+    background-color: rgba(255, 53, 55, 0.7);
     position: relative;
 }
 
@@ -365,7 +384,7 @@ body {
     display: flex;
     align-items: flex-end;
     height: 100%;
-    background-color: rgba(0,0,255,0.5);
+    background-color: rgba(48, 137, 255, 0.7);
     position: relative;
 }
 

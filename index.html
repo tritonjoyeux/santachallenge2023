@@ -6,6 +6,7 @@
     <title>Smash santa</title>
     <link rel="icon" href="assets/images/favicon.ico" />
     <link rel="stylesheet" href="css/style.css">
+    <script src="lib/html2canvas.min.js"></script>
 </head>
 <body>
     <div id="menu">
@@ -89,12 +90,11 @@
                 </div>
             </div>
         </div>
-        <!----->                                            
         <div id="santaPlayer1" class="santaPlayers">
-            <img id="player1" src="assets/images/santa/beach.png">
+            <img id="player1" src="">
         </div>
         <div id="santaPlayer2" class="santaPlayers">
-            <img id="player2" src="assets/images/santa/beach.png">
+            <img id="player2" src="">
         </div>
         <div class="names" id="santaNamePlayer1"><div class="nameFull" id="name1"></div></div>
         <div class="names" id="santaNamePlayer2"><div class="nameFull" id="name2"></div></div>
@@ -117,9 +117,15 @@
     <div id="muteButton">
         <img draggable="false" src="assets/images/mute.png" id="mute">
     </div>
+    <div id="downloadImage">
+        <img draggable="false" src="assets/images/download.webp" id="download">
+    </div>
     <audio id="theme" src="assets/music/theme.mp3" loop></audio>
     <audio id="choose" src="assets/music/choose.mp3"></audio>
     <audio id="select" src="assets/music/select.mp3"></audio>
+    <audio id="vsSound" src="assets/music/vs.mp3"></audio>
+    <audio id="spawnSound" src="assets/music/spawn.mp3"></audio>
+    <audio id="spawn2Sound" src="assets/music/spawn.mp3"></audio>
     <script src="js/script.js"></script>
 </body>
 </html>
