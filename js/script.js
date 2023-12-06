@@ -1,4 +1,20 @@
 window.onload = function () {
+    if (window.innerWidth < 1555) {
+        document.getElementById("upScreen").style.display = "block";
+        document.getElementById("gameScreen").style.display = "none";
+    }
+
+    window.addEventListener("resize", function () {
+        if (window.innerWidth < 1555) {
+            document.getElementById("upScreen").style.display = "block";
+            document.getElementById("gameScreen").style.display = "none";
+        } else {
+            document.getElementById("upScreen").style.display = "none";
+            document.getElementById("gameScreen").style.display = "flex";
+        }
+    })
+
+
     state = 'menu';
     volume = 0.5;
 

@@ -8,119 +8,122 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="lib/html2canvas.min.js"></script>
 </head>
-<body>    
-    <div id="menu">
-        <img draggable="false" src="assets/images/logo_full.png" id="logo">
-        <div id="playButton">Jouer</div>
-    </div>
-    <div id="container">
-        <img draggable="false" id="charactersScene" src="assets/images/background.png">
-        <div id="background"></div>
-        <div class="santaCharactersContainer">
-            <div class="charactersRow">
-                <div class="santaImagesContainer" id="santa1container" data-id="0" data-name="Chef Santatouille">
-                    <img draggable="false" src="assets/images/santa/chef.png" class="santaImages">
-                    <div class="santaName">Chef Santatouille</div>
+<body>  
+    <div id="upScreen">Agrandissez le navigateur pour jouer !</div>  
+    <div id="gameScreen">
+        <div id="menu">
+            <img draggable="false" src="assets/images/logo_full.png" id="logo">
+            <div id="playButton">Jouer</div>
+        </div>
+        <div id="container">
+            <img draggable="false" id="charactersScene" src="assets/images/background.png">
+            <div id="background"></div>
+            <div class="santaCharactersContainer">
+                <div class="charactersRow">
+                    <div class="santaImagesContainer" id="santa1container" data-id="0" data-name="Chef Santatouille">
+                        <img draggable="false" src="assets/images/santa/chef.png" class="santaImages">
+                        <div class="santaName">Chef Santatouille</div>
+                    </div>
+                    <div class="santaImagesContainer" id="santa2container" data-id="1" data-name="Santa Steam">
+                        <img draggable="false" src="assets/images/santa/steampunk.png" class="santaImages">
+                        <div class="santaName">Santa Steam</div>
+                    </div>
+                    <div class="santaImagesContainer" id="santa3container" data-id="2" data-name="Santa Lasso">
+                        <img draggable="false" src="assets/images/santa/cowboy.png" class="santaImages">
+                        <div class="santaName">Santa Lasso</div>
+                    </div>
+                    <div class="santaImagesContainer" id="santa4container" data-id="3" data-name="Santa Lock">
+                        <img draggable="false" src="assets/images/santa/detective.png" class="santaImages">
+                        <div class="santaName">Santa Lock</div>
+                    </div>
+                    <div class="santaImagesContainer" id="santa5container" data-id="4" data-name="Magico Santa">
+                        <img draggable="false" src="assets/images/santa/magician.png" class="santaImages">
+                        <div class="santaName">Magico Santa</div>
+                    </div>
+                    <div class="santaImagesContainer" id="santa6container" data-id="5" data-name="Santa Rock'n'Roll">
+                        <img draggable="false" src="assets/images/santa/rockstar.png" class="santaImages">
+                        <div class="santaName">Santa Rock'n'Roll</div>
+                    </div>
                 </div>
-                <div class="santaImagesContainer" id="santa2container" data-id="1" data-name="Santa Steam">
-                    <img draggable="false" src="assets/images/santa/steampunk.png" class="santaImages">
-                    <div class="santaName">Santa Steam</div>
+                <!----->
+                <div class="charactersRow">
+                    <div class="santaImagesContainer" id="santa7container" data-id="6" data-name="Santa Scuba">
+                        <img draggable="false" src="assets/images/santa/scuba.png" class="santaImages">
+                        <div class="santaName">Santa Scuba</div>
+                    </div>
+                    <div class="santaImagesContainer" id="santa8container" data-id="7" data-name="Santa Beach">
+                        <img draggable="false" src="assets/images/santa/beach.png" class="santaImages">
+                        <div class="santaName">Santa Beach</div>
+                    </div>
+                    <div class="santaImagesContainer" id="santa9container" data-id="8" data-name="Santa Pesquet">
+                        <img draggable="false" src="assets/images/santa/space.png" class="santaImages">
+                        <div class="santaName">Santa Pesquet</div>
+                    </div>
+                    <div class="santaImagesContainer" id="santa10container" data-id="9" data-name="Santa Gears">
+                        <img draggable="false" src="assets/images/santa/steampunk2.png" class="santaImages">
+                        <div class="santaName">Santa Gears</div>
+                    </div>
+                    <div class="santaImagesContainer" id="santa11container" data-id="10" data-name="Commander Claus">
+                        <img draggable="false" src="assets/images/santa/space2.png" class="santaImages">
+                        <div class="santaName">Commander Claus</div>
+                    </div>
                 </div>
-                <div class="santaImagesContainer" id="santa3container" data-id="2" data-name="Santa Lasso">
-                    <img draggable="false" src="assets/images/santa/cowboy.png" class="santaImages">
-                    <div class="santaName">Santa Lasso</div>
-                </div>
-                <div class="santaImagesContainer" id="santa4container" data-id="3" data-name="Santa Lock">
-                    <img draggable="false" src="assets/images/santa/detective.png" class="santaImages">
-                    <div class="santaName">Santa Lock</div>
-                </div>
-                <div class="santaImagesContainer" id="santa5container" data-id="4" data-name="Magico Santa">
-                    <img draggable="false" src="assets/images/santa/magician.png" class="santaImages">
-                    <div class="santaName">Magico Santa</div>
-                </div>
-                <div class="santaImagesContainer" id="santa6container" data-id="5" data-name="Santa Rock'n'Roll">
-                    <img draggable="false" src="assets/images/santa/rockstar.png" class="santaImages">
-                    <div class="santaName">Santa Rock'n'Roll</div>
+                <!----->
+                <div class="charactersRow">
+                    <div class="santaImagesContainer" id="santa12container" data-id="11" data-name="Super Santa">
+                        <img draggable="false" src="assets/images/santa/superhero.png" class="santaImages">
+                        <div class="santaName">Super Santa</div>
+                    </div>
+                    <div class="santaImagesContainer" id="santa13container" data-id="12" data-name="Santa Chill">
+                        <img draggable="false" src="assets/images/santa/chill.png" class="santaImages">
+                        <div class="santaName">Santa Chill</div>
+                    </div>
+                    <div class="santaImagesContainer" id="santa14container" data-id="13" data-name="Santa Automate">
+                        <img draggable="false" src="assets/images/santa/futur.png" class="santaImages">
+                        <div class="santaName">Santa Automate</div>
+                    </div>
+                    <div class="santaImagesContainer" id="santa15container" data-id="14" data-name="Knight Santa">
+                        <img draggable="false" src="assets/images/santa/medieval.png" class="santaImages">
+                        <div class="santaName">Knight Claus</div>
+                    </div>
+                    <div class="santaImagesContainer" id="santa16container" data-id="15" data-name="Santa Guardian">
+                        <img draggable="false" src="assets/images/santa/superhero2.png" class="santaImages">
+                        <div class="santaName">Santa Guardian</div>
+                    </div>
                 </div>
             </div>
-            <!----->
-            <div class="charactersRow">
-                <div class="santaImagesContainer" id="santa7container" data-id="6" data-name="Santa Scuba">
-                    <img draggable="false" src="assets/images/santa/scuba.png" class="santaImages">
-                    <div class="santaName">Santa Scuba</div>
-                </div>
-                <div class="santaImagesContainer" id="santa8container" data-id="7" data-name="Santa Beach">
-                    <img draggable="false" src="assets/images/santa/beach.png" class="santaImages">
-                    <div class="santaName">Santa Beach</div>
-                </div>
-                <div class="santaImagesContainer" id="santa9container" data-id="8" data-name="Santa Pesquet">
-                    <img draggable="false" src="assets/images/santa/space.png" class="santaImages">
-                    <div class="santaName">Santa Pesquet</div>
-                </div>
-                <div class="santaImagesContainer" id="santa10container" data-id="9" data-name="Santa Gears">
-                    <img draggable="false" src="assets/images/santa/steampunk2.png" class="santaImages">
-                    <div class="santaName">Santa Gears</div>
-                </div>
-                <div class="santaImagesContainer" id="santa11container" data-id="10" data-name="Commander Claus">
-                    <img draggable="false" src="assets/images/santa/space2.png" class="santaImages">
-                    <div class="santaName">Commander Claus</div>
-                </div>
+            <div id="santaPlayer1" class="santaPlayers">
+                <img id="player1" src="">
             </div>
-            <!----->
-            <div class="charactersRow">
-                <div class="santaImagesContainer" id="santa12container" data-id="11" data-name="Super Santa">
-                    <img draggable="false" src="assets/images/santa/superhero.png" class="santaImages">
-                    <div class="santaName">Super Santa</div>
-                </div>
-                <div class="santaImagesContainer" id="santa13container" data-id="12" data-name="Santa Chill">
-                    <img draggable="false" src="assets/images/santa/chill.png" class="santaImages">
-                    <div class="santaName">Santa Chill</div>
-                </div>
-                <div class="santaImagesContainer" id="santa14container" data-id="13" data-name="Santa Automate">
-                    <img draggable="false" src="assets/images/santa/futur.png" class="santaImages">
-                    <div class="santaName">Santa Automate</div>
-                </div>
-                <div class="santaImagesContainer" id="santa15container" data-id="14" data-name="Knight Santa">
-                    <img draggable="false" src="assets/images/santa/medieval.png" class="santaImages">
-                    <div class="santaName">Knight Claus</div>
-                </div>
-                <div class="santaImagesContainer" id="santa16container" data-id="15" data-name="Santa Guardian">
-                    <img draggable="false" src="assets/images/santa/superhero2.png" class="santaImages">
-                    <div class="santaName">Santa Guardian</div>
-                </div>
+            <div id="santaPlayer2" class="santaPlayers">
+                <img id="player2" src="">
+            </div>
+            <div class="names" id="santaNamePlayer1"><div class="nameFull" id="name1"></div></div>
+            <div class="names" id="santaNamePlayer2"><div class="nameFull" id="name2"></div></div>
+            <div id="startGameButton">Jouer</div>
+        </div>
+        <div id="presentation">
+            <div id="vsContainer">
+                <img draggable="false" src="assets/images/logo.png" id="logoVs">
+                <img draggable="false" src="assets/images/vs.png" id="vs">
+            </div>
+            <div id="presentationPlayerOneContainer">
+                <img draggable="false" src="" class="presentationImage" id="presentationPlayerOne">
+                <div class="playerName" id="presentationNamePlayerOne"></div>
+                <canvas id="myCanvasFire" width="750" height="966"></canvas><br>
+            </div>
+            <div id="presentationPlayerTwoContainer">
+                <img draggable="false" src="" class="presentationImage" id="presentationPlayerTwo">
+                <div class="playerName" id="presentationNamePlayerTwo"></div>
+                <canvas id="myCanvasIce" width="750" height="966"></canvas><br>
             </div>
         </div>
-        <div id="santaPlayer1" class="santaPlayers">
-            <img id="player1" src="">
+        <div id="muteButton">
+            <img draggable="false" src="assets/images/mute.png" id="mute">
         </div>
-        <div id="santaPlayer2" class="santaPlayers">
-            <img id="player2" src="">
+        <div id="downloadImage">
+            <img draggable="false" src="assets/images/download.webp" id="download">
         </div>
-        <div class="names" id="santaNamePlayer1"><div class="nameFull" id="name1"></div></div>
-        <div class="names" id="santaNamePlayer2"><div class="nameFull" id="name2"></div></div>
-        <div id="startGameButton">Jouer</div>
-    </div>
-    <div id="presentation">
-        <div id="vsContainer">
-            <img draggable="false" src="assets/images/logo.png" id="logoVs">
-            <img draggable="false" src="assets/images/vs.png" id="vs">
-        </div>
-        <div id="presentationPlayerOneContainer">
-            <img draggable="false" src="" class="presentationImage" id="presentationPlayerOne">
-            <div class="playerName" id="presentationNamePlayerOne"></div>
-            <canvas id="myCanvasFire" width="750" height="966"></canvas><br>
-        </div>
-        <div id="presentationPlayerTwoContainer">
-            <img draggable="false" src="" class="presentationImage" id="presentationPlayerTwo">
-            <div class="playerName" id="presentationNamePlayerTwo"></div>
-            <canvas id="myCanvasIce" width="750" height="966"></canvas><br>
-        </div>
-    </div>
-    <div id="muteButton">
-        <img draggable="false" src="assets/images/mute.png" id="mute">
-    </div>
-    <div id="downloadImage">
-        <img draggable="false" src="assets/images/download.webp" id="download">
     </div>
     <audio id="theme" src="assets/music/theme.mp3" loop></audio>
     <audio id="choose" src="assets/music/choose.mp3"></audio>

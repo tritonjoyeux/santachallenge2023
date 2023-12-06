@@ -498,3 +498,14 @@ body {
     bottom: 0;
     display: none;
 }
+
+#upScreen {
+    font-size: 42px;
+    color: white;
+    font-family: 'SmashBross';
+    display: none;
+}
+
+#gameScreen {
+    
+}
