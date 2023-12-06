@@ -13,6 +13,7 @@ body {
     align-items: center;
     background-color: #0A111C;
     cursor: url('../assets/images/pointer.png'), pointer;
+    overflow: hidden;
 }
 
 #muteButton {
@@ -87,14 +88,14 @@ body {
     }
     100%{
         opacity: 1;
-        transform: scale(1);
+        transform: scale(0.8);
     }
 }
 
 @keyframes gameHide {
     0%{
         opacity: 1;
-        transform: scale(1);
+        transform: scale(0.8);
     }
     100%{
         opacity: 0;

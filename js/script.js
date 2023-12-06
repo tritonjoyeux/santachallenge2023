@@ -1,11 +1,11 @@
 window.onload = function () {
-    if (window.innerWidth < 1555) {
+    if (window.innerWidth < (1555 * 0.8)) {
         document.getElementById("upScreen").style.display = "block";
         document.getElementById("gameScreen").style.display = "none";
     }
 
     window.addEventListener("resize", function () {
-        if (window.innerWidth < 1555) {
+        if (window.innerWidth < (1555 * 0.8)) {
             document.getElementById("upScreen").style.display = "block";
             document.getElementById("gameScreen").style.display = "none";
         } else {
