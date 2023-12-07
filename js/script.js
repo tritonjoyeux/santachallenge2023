@@ -14,20 +14,24 @@ window.onload = function () {
         }
     })
 
-
     state = 'menu';
-    volume = 0.1;
+    const volumeMax = 0.1;
+    volume = volumeMax;
 
     const choose = document.getElementById("choose");
     const select = document.getElementById("select");
+    const select2 = document.getElementById("select2");
     const vsSound = document.getElementById("vsSound");
+    const vsAfter = document.getElementById("vsAfter");
     const spawnSound = document.getElementById("spawnSound");
     const spawn2Sound = document.getElementById("spawn2Sound");
     const theme = document.getElementById("theme");
 
     choose.volume = volume;
     select.volume = volume;
+    select2.volume = volume;
     vsSound.volume = volume;
+    vsAfter.volume = volume;
     spawnSound.volume = volume;
     spawn2Sound.volume = volume;
     theme.volume = volume;
@@ -53,14 +57,17 @@ window.onload = function () {
 
     document.getElementById("muteButton").addEventListener("click", function () {
         if (theme.volume === 0) {
-            volume = 0.1;
+            volume = volumeMax;
             document.getElementById("muteButton").style.backgroundColor = "white";
         } else {
             volume = 0;
             document.getElementById("muteButton").style.backgroundColor = "grey";
         }
+        choose.volume = volume;
         select.volume = volume;
+        select2.volume = volume;
         vsSound.volume = volume;
+        vsAfter.volume = volume;
         spawnSound.volume = volume;
         spawn2Sound.volume = volume;
         theme.volume = volume;
@@ -98,12 +105,28 @@ window.onload = function () {
             document.getElementById("presentationNamePlayerTwo").innerHTML = player2Name;
             // document.getElementById("downloadImage").style.display = "flex";
 
-            document.getElementById("presentationPlayerOne").classList.add("fromLeft");
+            if (santaLook[player1] === 'left') {
+                document.getElementById("presentationPlayerOneContainer").style.transform = "scaleX(-1)";
+                document.getElementById("presentationNamePlayerOne").style.transform = "scaleX(-1)";
+                document.getElementById("presentationPlayerOne").classList.add("fromRight");
+            } else {
+                document.getElementById("presentationPlayerOne").classList.add("fromLeft");
+            }
             setTimeout(() => {
                 spawn2Sound.play();
-                document.getElementById("presentationPlayerTwo").classList.add("fromRight");
+                if (santaLook[player2] === 'right') {
+                    document.getElementById("presentationPlayerTwoContainer").style.transform = "scaleX(-1)";
+                    document.getElementById("presentationNamePlayerTwo").style.transform = "scaleX(-1)";
+                    document.getElementById("presentationPlayerTwo").classList.add("fromLeft");
+                } else {
+                    document.getElementById("presentationPlayerTwo").classList.add("fromRight");
+                }
                 setTimeout(() => {
                     vsSound.play();
+                    setTimeout(() => {
+                        document.getElementById("lightning").classList.add("strike");
+                        vsAfter.play();
+                    }, 1000)
                     document.getElementById("vs").classList.add("fromTop");
                     document.getElementById("myCanvasFire").style.display = "block";
                     document.getElementById("myCanvasIce").style.display = "block";
@@ -124,6 +147,25 @@ window.onload = function () {
         santasNames.push(domSantas[i].dataset.name);
     }
 
+    const santaLook = [
+        'left',
+        'right',
+        'right',
+        'right',
+        'left',
+        'right',
+        'left',
+        'right',
+        'right',
+        'right',
+        'left',
+        'right',
+        'right',
+        'left',
+        'right',
+        'right'
+    ]
+
     player1 = null;
     player1Locked = false;
     player1Name = '';
@@ -137,18 +179,12 @@ window.onload = function () {
             if (state === 'menu') {
                 return;
             }
+
             if (player1 !== this.dataset.id) {
-                if (player1Locked)
-                    return;
+                player1Locked = true;
                 player1 = this.dataset.id;
                 player1Name = this.dataset.name;
                 updateGame(1);
-            } else {
-                player1Locked = !player1Locked;
-                if (player1Locked) {
-                    select.play();
-                }
-                updateGame(1, true);
             }
         });
     }
@@ -161,11 +197,13 @@ window.onload = function () {
 
         if (e.keyCode == '13') {
             // enter
-            player2Locked = !player2Locked;
-            if (player2Locked) {
-                document.getElementById("select").play();
+            if (player2 !== null) {
+                player2Locked = !player2Locked;
+                if (player2Locked) {
+                    select2.play();
+                }
+                updateGame(2, true);
             }
-            updateGame(2, true);
             return;
         }
 
@@ -256,12 +294,12 @@ window.onload = function () {
             var santaImages = document.getElementsByClassName("santaImagesContainer");
             for (var image of santaImages) {
                 if (image.dataset.id == player1) {
-                    image.style.backgroundColor = "rgba(255, 0, 0, " + (player1Locked ? 1 : 0.5) + ")";
+                    image.style.backgroundColor = "rgba(255, 53, 55, " + (player1Locked ? 1 : 0.5) + ")";
                     if (player2 == player1) {
                         image.style.backgroundColor = "purple";
                     }
                 } else if (image.dataset.id == player2) {
-                    image.style.backgroundColor = "rgba(0, 0, 255, " + (player2Locked ? 1 : 0.5) + ")";
+                    image.style.backgroundColor = "rgba(40, 143, 233, " + (player2Locked ? 1 : 0.5) + ")";
                 } else {
                     image.style.backgroundColor = "transparent";
                 }
